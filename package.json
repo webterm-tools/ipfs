@@ -1,0 +1,19 @@
+{
+  "name": "@webterm-tools/ipfs",
+  "version": "0.0.1",
+  "description": "ipfs-cli wrapper for the browser terminal",
+  "author": {
+    "name": "Sahid",
+    "email": "sahid.miller@gmail.com"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "copy-webpack-plugin": "^9.0.1",
+    "ipfs": "^0.59.1",
+    "joi": "^17.4.2",
+    "webpack": "^5.57.1",
+    "webpack-cli": "^4.8.0"
+  }
+}
