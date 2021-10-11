@@ -1,5 +1,8 @@
 const webpack = require("webpack");
 const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin")
+
+const ipfsCliCommands = path.resolve("./node_modules/ipfs-cli/cjs/src/commands");
 
 module.exports =   {
   entry: {
@@ -79,9 +82,31 @@ module.exports =   {
   },
   resolve: {
     alias: {
+      "ipfs-core-config/repo": require.resolve("./src/repo.js"),
+      "ipfs-repo/locks/memory": require.resolve("./src/fs-lock.js"),
+      "ipfs-repo/locks/fs": require.resolve("./src/fs-lock.js"),
       'ipfs-core-utils/agent$': require.resolve("./polyfills/agent.mjs"),
       "ipfs-utils/src/http$": path.resolve(__dirname, "./node_modules/ipfs-utils/src/http.js"),
       "ipfs-utils/src/fetch$": path.resolve(__dirname, "./node_modules/ipfs-utils/src/fetch.js"),
+      "mkdirp": require.resolve("./polyfills/mkdirp")
     },
   },
+  plugins: [
+    new webpack.NormalModuleReplacementPlugin(
+      /\.\/init/,
+      (resource) => {
+        if (path.normalize(resource.context) === ipfsCliCommands) {
+          resource.request = require.resolve("./src/init.js");
+        }
+      }
+    ),
+    new webpack.NormalModuleReplacementPlugin(
+      /\/locks\/(memory|fs)/,
+      (resource) => {
+        if (/ipfs-repo/.test(resource.context)) { 
+          resource.request = require.resolve("./src/fs-lock.js")
+        }
+      }
+    ),
+  ]
 }
