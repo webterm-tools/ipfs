@@ -6,7 +6,9 @@ export function cli(command, ctxMiddleware) {
   command = commandAlias(command);
   return new Promise((resolve, reject) => {
     try {
-      createParser().middleware(ctxMiddleware).onFinishCommand(data => {
+      const parser = createParser()
+      
+      parser.middleware(ctxMiddleware).onFinishCommand(data => {
         resolve(data);
       }).fail((msg, err, yargs) => {
         if (msg) {

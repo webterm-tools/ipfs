@@ -36,6 +36,78 @@ module.exports =   {
       }
     }
   },
+  module: {
+    rules: [
+      {
+        test: /\.m?js(x?)$/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            "presets": [
+              [
+                "@babel/preset-env",
+                {
+                  "include": [
+                    "babel-plugin-proposal-class-properties",
+                    "babel-plugin-proposal-private-methods"
+                  ],
+                  "exclude": [
+                    "babel-plugin-proposal-async-generator-functions",
+                    // "babel-plugin-proposal-class-properties",
+                    "babel-plugin-proposal-class-static-block",
+                    "babel-plugin-proposal-dynamic-import",
+                    "babel-plugin-proposal-export-namespace-from",
+                    "babel-plugin-proposal-json-strings",
+                    "babel-plugin-proposal-logical-assignment-operators",
+                    "babel-plugin-proposal-nullish-coalescing-operator",
+                    "babel-plugin-proposal-numeric-separator",
+                    "babel-plugin-proposal-object-rest-spread",
+                    "babel-plugin-proposal-optional-catch-binding",
+                    "babel-plugin-proposal-optional-chaining",
+                    // "babel-plugin-proposal-private-methods",
+                    "babel-plugin-proposal-private-property-in-object",
+                    "babel-plugin-proposal-unicode-property-regex",
+                    "babel-plugin-transform-arrow-functions",
+                    "babel-plugin-transform-async-to-generator",
+                    "babel-plugin-transform-block-scoped-functions",
+                    "babel-plugin-transform-block-scoping",
+                    "babel-plugin-transform-classes",
+                    "babel-plugin-transform-computed-properties",
+                    "babel-plugin-transform-destructuring",
+                    "babel-plugin-transform-dotall-regex",
+                    "babel-plugin-transform-duplicate-keys",
+                    "babel-plugin-transform-exponentiation-operator",
+                    "babel-plugin-transform-for-of",
+                    "babel-plugin-transform-function-name",
+                    "babel-plugin-transform-literals",
+                    "babel-plugin-transform-member-expression-literals",
+                    "babel-plugin-transform-modules-amd",
+                    "babel-plugin-transform-modules-commonjs",
+                    "babel-plugin-transform-modules-systemjs",
+                    "babel-plugin-transform-modules-umd",
+                    "babel-plugin-transform-named-capturing-groups-regex",
+                    "babel-plugin-transform-new-target",
+                    "babel-plugin-transform-object-super",
+                    "babel-plugin-transform-parameters",
+                    "babel-plugin-transform-property-literals",
+                    "babel-plugin-transform-regenerator",
+                    "babel-plugin-transform-reserved-words",
+                    "babel-plugin-transform-shorthand-properties",
+                    "babel-plugin-transform-spread",
+                    "babel-plugin-transform-sticky-regex",
+                    "babel-plugin-transform-template-literals",
+                    "babel-plugin-transform-typeof-symbol",
+                    "babel-plugin-transform-unicode-escapes",
+                    "babel-plugin-transform-unicode-regex",
+                  ]
+                }
+              ]
+            ]
+          }
+        },
+      },
+    ]
+  },
   output: {
     path: path.resolve("./dist"),
     filename: "index.js",

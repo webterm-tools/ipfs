@@ -26,13 +26,13 @@ const functions = {
 
 function getOpts(opts) {
   if (!opts)
-  opts = { mode: 0o777 }
+  opts = { mode: 777 }
   else if (typeof opts === 'object')
-  opts = { mode: opts.mode || 0o777 }
+  opts = { mode: opts.mode || 777 }
   else if (typeof opts === 'number')
   opts = { mode: opts }
   else if (typeof opts === 'string')
-  opts = { mode: parseInt(opts, 8) }
+  opts = { mode: parseInt(opts) }
   else
   throw new TypeError('invalid options argument')
 
