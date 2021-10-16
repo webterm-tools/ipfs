@@ -154,6 +154,7 @@ module.exports =   {
   },
   resolve: {
     alias: {
+      "ipfs-core-config/config": require.resolve("./src/config.js"),
       "ipfs-core-config/repo": require.resolve("./src/repo.js"),
       "ipfs-repo/locks/memory": require.resolve("./src/fs-lock.js"),
       "ipfs-repo/locks/fs": require.resolve("./src/fs-lock.js"),
